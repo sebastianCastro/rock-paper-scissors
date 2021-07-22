@@ -4,7 +4,7 @@ let hoomanCount = 0;
 let computerWins = "Computer wins!";
 let computerCount = 0;
 let tie = "Tie!"
-let i = 1;
+let i = 2;
 let winner = document.getElementById("round-winner");
 
 function roundWinner(playerSelection, computerSelection) {
@@ -13,28 +13,22 @@ function roundWinner(playerSelection, computerSelection) {
             winner.textContent = tie;
         } else if (computerSelection == "paper") {
             winner.textContent = computerWins;
-            computerCount ++;
         } else {
             winner.textContent = hoomanWins;
-            hoomanCount ++;
         }
     } else if (playerSelection == "paper-btn") {
         if (computerSelection == "rock") {
             winner.textContent = hoomanWins;
-            hoomanCount ++;
         } else if (computerSelection == "paper") {
             winner.textContent = tie;
         } else {
             winner.textContent = computerWins;
-            computerCount ++;
         }
     } else if (playerSelection == "scissors-btn") {
         if (computerSelection == "rock") {
             winner.textContent = computerWins;
-            computerCount ++;
         } else if (computerSelection == "paper") {
             winner.textContent = hoomanWins;
-            hoomanCount ++;
         } else {
             winner.textContent = tie;
         }
@@ -43,27 +37,46 @@ function roundWinner(playerSelection, computerSelection) {
     }
 }
 
-function score() {
+function score(playerSelection, computerSelection) {
     let scoreDiv = document.getElementById("score");
     let scoreStr = "";
+    if (playerSelection || computerSelection !== "Tie!") {
+        if (winner.textContent == hoomanWins) {
+            hoomanCount ++;
+            i ++;
+        } else {
+            computerCount ++;
+            i ++;
+        }
+    }
     scoreDiv.textContent = scoreStr.concat(hoomanCount, " - ", computerCount);
 }
 
-// function counter(roundWinner) {
-//     let roundCounter = document.getElementById("round-counter");
-//     roundCounter.textContent = "Round: " + i;
-//     if (i < 5) {
-//         if (roundWinner != "Tie!" ) {
-//             i ++
-//         }
-//     } else if (i = 5) {
-//         if (hoomanCount > computerCount) {
-//             winner.textContent = "Hooman wins the game.";
-//         } else if (computerCount > hoomanCount) {
-//             winner.textContent = "Computer wins the game.";
-//         } else {
-//             winner.textContent = "I'ts a tie."
-//         }
+function counter() {
+    let roundCounter = document.getElementById("round-counter");
+    if (i == 5) {
+        roundCounter.textContent = "Final Round";
+    } else {
+        roundCounter.textContent = "Round: " + i;
+    }
+}
+
+// function resetGame() {
+//     if (hoomanCount || computerCount > 5) {
+//         roundCounter.textContent = "Round: 1";
+//         hoomanCount = 0;
+//         computerCount = 0;
+//         winner.textContent = "Choose wisely";
+//     }
+// }
+
+// else {
+//     if (hoomanCount > computerCount) {
+//         winner.textContent = "Hooman wins the game.";
+//     } else if (computerCount > hoomanCount) {
+//         winner.textContent = "Computer wins the game.";
+//     } else {
+//         winner.textContent = "I'ts a tie."
 //     }
 // }
 
@@ -73,7 +86,8 @@ function game(e, playerSelection, computerSelection) {
     computerSelection = computerHand[Math.floor(Math.random() * 3)];
     counter();
     roundWinner(playerSelection, computerSelection);
-    score();
+    score(playerSelection, computerSelection);
+    // resetGame();
 }
 
 let rockBtn = document.getElementById("rock-btn");

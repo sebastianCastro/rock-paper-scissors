@@ -1,64 +1,79 @@
 let computerHand = ["rock", "paper", "scissors"];
 let hoomanWins = "Hooman wins!";
 let hoomanCount = 0;
-let computerWins = "Computer wins!"
+let computerWins = "Computer wins!";
 let computerCount = 0;
 let tie = "Tie!"
+let i = 1;
+let winner = document.getElementById("round-winner");
 
-function playRound(playerSelection, computerSelection) {
-    let roundWinner = document.getElementById("round-winner");
+function roundWinner(playerSelection, computerSelection) {
     if (playerSelection == "rock-btn") {
         if (computerSelection == "rock") {
-            roundWinner.textContent = tie;
+            winner.textContent = tie;
         } else if (computerSelection == "paper") {
-            roundWinner.textContent = computerWins;
+            winner.textContent = computerWins;
             computerCount ++;
         } else {
-            roundWinner.textContent = hoomanWins;
+            winner.textContent = hoomanWins;
             hoomanCount ++;
         }
     } else if (playerSelection == "paper-btn") {
         if (computerSelection == "rock") {
-            roundWinner.textContent = hoomanWins;
+            winner.textContent = hoomanWins;
             hoomanCount ++;
         } else if (computerSelection == "paper") {
-            roundWinner.textContent = tie;
+            winner.textContent = tie;
         } else {
-            roundWinner.textContent = computerWins;
+            winner.textContent = computerWins;
             computerCount ++;
         }
     } else if (playerSelection == "scissors-btn") {
         if (computerSelection == "rock") {
-            roundWinner.textContent = computerWins;
+            winner.textContent = computerWins;
             computerCount ++;
         } else if (computerSelection == "paper") {
-            roundWinner.textContent = hoomanWins;
+            winner.textContent = hoomanWins;
             hoomanCount ++;
         } else {
-            roundWinner.textContent = tie;
+            winner.textContent = tie;
         }
     } else {
         console.log("invalid input");
     }
 }
 
-// function winner(hoomanCount, computerCount) {
-//     if (hoomanCount > computerCount) {
-//         console.log(hoomanWins);
-//     } else if (computerCount > hoomanCount) {
-//         console.log(computerWins);
-//     } else {
-//         console.log(tie);
+function score() {
+    let scoreDiv = document.getElementById("score");
+    let scoreStr = "";
+    scoreDiv.textContent = scoreStr.concat(hoomanCount, " - ", computerCount);
+}
+
+// function counter(roundWinner) {
+//     let roundCounter = document.getElementById("round-counter");
+//     roundCounter.textContent = "Round: " + i;
+//     if (i < 5) {
+//         if (roundWinner != "Tie!" ) {
+//             i ++
+//         }
+//     } else if (i = 5) {
+//         if (hoomanCount > computerCount) {
+//             winner.textContent = "Hooman wins the game.";
+//         } else if (computerCount > hoomanCount) {
+//             winner.textContent = "Computer wins the game.";
+//         } else {
+//             winner.textContent = "I'ts a tie."
+//         }
 //     }
 // }
+
 
 function game(e, playerSelection, computerSelection) {
     playerSelection = e.target.id;
     computerSelection = computerHand[Math.floor(Math.random() * 3)];
-    playRound(playerSelection, computerSelection);
-    let score = document.getElementById("score");
-    let scoreStr = "";
-    score.textContent = scoreStr.concat(hoomanCount, " - ", computerCount);
+    counter();
+    roundWinner(playerSelection, computerSelection);
+    score();
 }
 
 let rockBtn = document.getElementById("rock-btn");

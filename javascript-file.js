@@ -11,7 +11,11 @@ let roundCounter = document.getElementById("round-counter");
 let displayHands = document.getElementById("display-hands")
 
 function roundWinner(playerSelection, computerSelection) {
+    rockBtn.style.backgroundColor = "rgba(255, 255, 255, 0)";
+    paperBtn.style.backgroundColor = "rgba(255, 255, 255, 0)";
+    scissorsBtn.style.backgroundColor = "rgba(255, 255, 255, 0)";
     if (playerSelection == "rock-btn") {
+        rockBtn.style.backgroundColor = "#2943F3";
         if (computerSelection == "rock") {
             winner.textContent = tie;
         } else if (computerSelection == "paper") {
@@ -20,6 +24,7 @@ function roundWinner(playerSelection, computerSelection) {
             winner.textContent = playerWins;
         }
     } else if (playerSelection == "paper-btn") {
+        paperBtn.style.backgroundColor = "#2943F3";
         if (computerSelection == "rock") {
             winner.textContent = playerWins;
         } else if (computerSelection == "paper") {
@@ -28,6 +33,7 @@ function roundWinner(playerSelection, computerSelection) {
             winner.textContent = computerWins;
         }
     } else if (playerSelection == "scissors-btn") {
+        scissorsBtn.style.backgroundColor = "#2943F3";
         if (computerSelection == "rock") {
             winner.textContent = computerWins;
         } else if (computerSelection == "paper") {
@@ -55,21 +61,21 @@ function score() {
 
 function counter() {
     if (i > 5){
-        roundCounter.textContent = "";
-        buttonsDiv.style.visibility = "hidden";
         restartBtn.style.visibility = "visible";
+        if (playerCount > computerCount) {
+            roundCounter.textContent = "You won";
+        } else if (computerCount > playerCount) {
+            roundCounter.textContent = "Computer won";
+        } else {
+            roundCounter.textContent = "Nobody wins, it's a tie";
+
+        }
     } else if (i == 5) {
         roundCounter.textContent = "Final Round";
     } else {
         roundCounter.textContent = "Round: ".concat(i);
     }
 }
-
-// function hiddeBtns() {
-//     rockBtn.style.visibility = "hidden";
-//     paperBtn.style.visibility = "hidden";
-//     scissorsBtn.style.visibility = "hidden";
-// }
 
 function showPlayerHand(playerSelection) {
     if (playerSelection == "rock-btn") {
@@ -97,19 +103,20 @@ function showHands(playerSelection, computerSelection) {
 }
 
 function restartGame() {
-    i = 0;
+    i = 1;
     playerCount = 0;
     computerCount = 0;
+    roundCounter.textContent = "Round: 1";
     scoreStr.textContent = playerCount + " - " + computerCount;
     displayHands.textContent = "";
-    winner.textContent = "";
-    buttonsDiv.style.visibility = "visible";
+    rockBtn.style.backgroundColor = "rgba(255, 255, 255, 0)";
+    paperBtn.style.backgroundColor = "rgba(255, 255, 255, 0)";
+    scissorsBtn.style.backgroundColor = "rgba(255, 255, 255, 0)";
     restartBtn.style.visibility = "hidden";
 }
 
 function game(e, playerSelection, computerSelection) {
     playerSelection = e.target.id;
-    // hiddeBtns(playerSelection);
     computerSelection = computerHand[Math.floor(Math.random() * 3)];
     showHands(playerSelection, computerSelection);
     roundWinner(playerSelection, computerSelection);
@@ -117,41 +124,21 @@ function game(e, playerSelection, computerSelection) {
     counter();
 }
 
-let buttonsDiv = document.getElementById("buttons-div");
-
-let btns = document.getElementsByClassName("buttons");
-let j;
-for (j = 0; j < btns.length; j++) {
-    btns[j].style.cursor = "pointer";
-    btns[j].style.background = "#C0BCBB";
-    btns[j].style.border = "none";
-    btns[j].style.padding = "15px 32px";
-    btns[j].style.fontSize = "16px";
-    btns[j].style.margin = "4px 2px";
-    btns[j].addEventListener("click", game);
-  }
+let playerButtons = document.getElementById("player-buttons");
 
 let rockBtn = document.getElementById("rock-btn");
-rockBtn.textContent = "R";
+rockBtn.style.cursor = "pointer";
+rockBtn.addEventListener("click", game);
 
 let paperBtn = document.getElementById("paper-btn");
-paperBtn.textContent = "P";
+paperBtn.style.cursor = "pointer";
+paperBtn.addEventListener("click", game);
 
 let scissorsBtn = document.getElementById("scissors-btn");
-scissorsBtn.textContent = "S";
+scissorsBtn.style.cursor = "pointer";
+scissorsBtn.addEventListener("click", game);
 
 let restartBtn = document.getElementById("restart-btn");
 restartBtn.style.visibility = "hidden";
 restartBtn.textContent = "Restart Game";
 restartBtn.addEventListener("click", restartGame);
-
-let body = document.getElementById("body");
-body.style.margin = 0;
-body.style.padding = 0;
-
-let container = document.getElementById("container-box");
-container.style.height = "100vh";
-container.style.margin = 0;
-container.style.padding = 0;
-container.style.border = 0;
-container.style.background = "#00000";

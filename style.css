@@ -1,0 +1,73 @@
+html {
+    overflow: hidden;
+}
+
+body{
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    font-family: "Comic Sans MS", "Comic Sans";
+    color: #121D69;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    background: #FFFFFF;
+}
+
+/* h1 {
+    color: #222222;
+}
+
+p {
+    color: #ffffff;
+} */
+
+.player-container {
+    display: flex;
+    flex-direction: column;
+    border: solid;
+    border-color: #692569;
+    border-radius: 10px;
+    background-color: #FF58FF;
+    margin: 10px;
+    width: 300px;
+    height: 250px;
+}
+
+.player-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100px;
+}
+
+.player-info.name {
+    height: 1fr;
+}
+
+.player-info.score{
+    height: 2fr;
+}
+
+.game-selection {
+    display: flex;
+    justify-content: center;
+    
+}
+
+.player-buttons {
+    display: flex;
+    justify-content: space-around;
+}
+
+.player-buttons img {
+    border-radius: 10px;
+    margin: 5px;
+}
+
+

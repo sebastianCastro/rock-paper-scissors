@@ -22,9 +22,11 @@ body{
 }
 
 .round-counter {
-    height: 90px;
-    display: flex;
-    justify-content: space-around;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    text-align: center;
+    height: 60px;
 }
 
 .players {
@@ -33,6 +35,7 @@ body{
     flex-direction: row;
     flex-wrap: wrap;
     align-content: center;
+ 
 }
 
 .player-container {
@@ -146,7 +149,9 @@ body{
     flex-direction: column;
     justify-content: center;
     align-content: center;
-    flex-wrap: wrap;
+    /* flex-wrap: wrap; */
+    height: 160px;
+    flex-wrap: nowrap;
 }
 
 .score #score-txt, #score {

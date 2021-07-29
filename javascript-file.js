@@ -8,38 +8,31 @@ let tie = "Tie!"
 let winner = document.getElementById("round-winner");
 let scoreStr = document.getElementById("score");
 let roundCounter = document.getElementById("round-counter");
-let displayHands = document.getElementById("display-hands")
 
 function roundWinner(playerSelection, computerSelection) {
-    rockBtn.style.backgroundColor = "rgba(255, 255, 255, 0)";
-    paperBtn.style.backgroundColor = "rgba(255, 255, 255, 0)";
-    scissorsBtn.style.backgroundColor = "rgba(255, 255, 255, 0)";
     if (playerSelection == "rock-btn") {
-        rockBtn.style.backgroundColor = "#2943F3";
         if (computerSelection == "rock") {
-            winner.textContent = tie;
+            winner = tie;
         } else if (computerSelection == "paper") {
-            winner.textContent = computerWins;
+            winner = computerWins;
         } else {
-            winner.textContent = playerWins;
+            winner = playerWins;
         }
     } else if (playerSelection == "paper-btn") {
-        paperBtn.style.backgroundColor = "#2943F3";
         if (computerSelection == "rock") {
-            winner.textContent = playerWins;
+            winner = playerWins;
         } else if (computerSelection == "paper") {
-            winner.textContent = tie;
+            winner = tie;
         } else {
-            winner.textContent = computerWins;
+            winner = computerWins;
         }
     } else if (playerSelection == "scissors-btn") {
-        scissorsBtn.style.backgroundColor = "#2943F3";
         if (computerSelection == "rock") {
-            winner.textContent = computerWins;
+            winner = computerWins;
         } else if (computerSelection == "paper") {
-            winner.textContent = playerWins;
+            winner = playerWins;
         } else {
-            winner.textContent = tie;
+            winner = tie;
         }
     } else {
         console.log("invalid input");
@@ -47,8 +40,8 @@ function roundWinner(playerSelection, computerSelection) {
 }
 
 function score() {
-    if (winner.textContent !== "Tie!") {
-        if (winner.textContent == playerWins) {
+    if (winner !== "Tie!") {
+        if (winner == playerWins) {
             playerCount ++;
             i ++;
         } else {
@@ -62,14 +55,6 @@ function score() {
 function counter() {
     if (i > 5){
         restartBtn.style.visibility = "visible";
-        if (playerCount > computerCount) {
-            roundCounter.textContent = "You won";
-        } else if (computerCount > playerCount) {
-            roundCounter.textContent = "Computer won";
-        } else {
-            roundCounter.textContent = "Nobody wins, it's a tie";
-
-        }
     } else if (i == 5) {
         roundCounter.textContent = "Final Round";
     } else {
@@ -78,22 +63,28 @@ function counter() {
 }
 
 function showPlayerHand(playerSelection) {
+    playerChoice[0].style.backgroundColor = "rgba(255, 255, 255, 0)";
+    playerChoice[1].style.backgroundColor = "rgba(255, 255, 255, 0)";
+    playerChoice[2].style.backgroundColor = "rgba(255, 255, 255, 0)";
     if (playerSelection == "rock-btn") {
-        displayHands.textContent = "Rock";
+        playerChoice[0].style.backgroundColor = "#18C8F5";
     } else if (playerSelection == "paper-btn") {
-        displayHands.textContent = "Paper";
+        playerChoice[1].style.backgroundColor = "#18C8F5";
     } else {
-        displayHands.textContent = "Scissors";
+        playerChoice[2].style.backgroundColor = "#18C8F5";
     }
 }
 
 function showComputerHand(computerSelection) {
+    computerChoice[0].style.backgroundColor = "rgba(255, 255, 255, 0)";
+    computerChoice[1].style.backgroundColor = "rgba(255, 255, 255, 0)";
+    computerChoice[2].style.backgroundColor = "rgba(255, 255, 255, 0)";
     if (computerSelection == "rock") {
-        displayHands.textContent = displayHands.textContent + " " + "Rock";
+        computerChoice[0].style.backgroundColor = "#F51865";
     } else if (computerSelection == "paper") {
-        displayHands.textContent = displayHands.textContent + " " + "Paper";
+        computerChoice[1].style.backgroundColor = "#F51865";
     } else {
-        displayHands.textContent = displayHands.textContent + " " + "Scissors";
+        computerChoice[2].style.backgroundColor = "#F51865";
     }
 }
 
@@ -108,10 +99,12 @@ function restartGame() {
     computerCount = 0;
     roundCounter.textContent = "Round: 1";
     scoreStr.textContent = playerCount + " - " + computerCount;
-    displayHands.textContent = "";
-    rockBtn.style.backgroundColor = "rgba(255, 255, 255, 0)";
-    paperBtn.style.backgroundColor = "rgba(255, 255, 255, 0)";
-    scissorsBtn.style.backgroundColor = "rgba(255, 255, 255, 0)";
+    playerChoice[0].style.backgroundColor = "rgba(255, 255, 255, 0)";
+    playerChoice[1].style.backgroundColor = "rgba(255, 255, 255, 0)";
+    playerChoice[2].style.backgroundColor = "rgba(255, 255, 255, 0)";
+    computerChoice[0].style.backgroundColor = "rgba(255, 255, 255, 0)";
+    computerChoice[1].style.backgroundColor = "rgba(255, 255, 255, 0)";
+    computerChoice[2].style.backgroundColor = "rgba(255, 255, 255, 0)";
     restartBtn.style.visibility = "hidden";
 }
 
@@ -124,7 +117,9 @@ function game(e, playerSelection, computerSelection) {
     counter();
 }
 
-let playerButtons = document.getElementById("player-buttons");
+let playerChoice = document.getElementsByClassName("player-choice");
+let computerChoice = document.getElementsByClassName("computer-choice");
+
 
 let rockBtn = document.getElementById("rock-btn");
 rockBtn.style.cursor = "pointer";

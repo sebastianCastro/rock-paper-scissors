@@ -13,34 +13,68 @@
     <div class="round-counter" >
         <h1 id="round-counter"> Round: 1</h1>
     </div>
-    <div class="player-container">
-        <div class="player-info">
-            <div class="name">
-                <p>Player</p>
+    <div class="players">
+        <div class="player-container">
+            <div class="player-info">
+                <div class="user-img">
+                <img src="./images/user.png">
+                </div>
+                <div class="name">
+                    <p>Player</p>
+                </div>
             </div>
-            <div class="score">
-                <p>Score</p>
+            <div class="game-selection">
+                <div class="player-buttons">
+                    <div class="player-choice">
+                        <img id="rock-btn" class="btn" src="./images/rockimg.png" alt="rock">
+                    </div>
+                    <div class="player-choice">
+                        <img id="paper-btn" class="btn" src="./images/paperimg.png" alt="paper">
+                    </div>
+                    <div class="player-choice">
+                        <img id="scissors-btn" class="btn" src="./images/scissorsimg.png" alt="scissors">
+                    </div>
+                </div>
             </div>
         </div>
-        <div class="game-selection">
-            <div id="player-buttons" class="player-buttons">
-                <div class="player-buttons">
-                    <img id="rock-btn" class="btn" src="./images/rock.png" alt="rock" style="width:70%">
+        <div class="score">
+            <p id="score-txt">Score</p>
+            <p id="score">0 - 0</p>
+            <div class="restart-button">
+                <button id="restart-btn">Restart</button>
+            </div>
+            <p id="round-winner"></p>
+        </div>
+        <div class="player-container">
+            <div class="player-info">
+                <div class="user-img">
+                    <img src="./images/laptop.png">
+                    </div>
+                <div class="name">
+                    <p>Computer</p>
                 </div>
-                <div class="player-buttons">
-                    <img id="paper-btn" class="btn" src="./images/paper.png" alt="paper" style="width:70%">
-                </div>
-                <div class="player-buttons">
-                    <img id="scissors-btn" class="btn" src="./images/scissors.png" alt="scissors" style="width:70%">
+            </div>
+            <div class="game-selection">
+                <div class="computer-buttons">
+                    <div class="computer-choice">
+                        <img id="rock-btn" class="btn" src="./images/rockimg.png" alt="rock">
+                    </div>
+                    <div class="computer-choice">
+                        <img id="paper-btn" class="btn" src="./images/paperimg.png" alt="paper">
+                    </div>
+                    <div class="computer-choice">
+                        <img id="scissors-btn" class="btn" src="./images/scissorsimg.png" alt="scissors">
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-    <div id="display-hands">Rock vs Paper</div>
-    <div id="round-winner">Winner</div>
-    <div id="score">0 - 0</div>
-    <div id="game-winner">YOU WIN</div>
-    <button id="restart-btn">Restart</button>
+    <!-- <div class="restart-button">
+        <button id="restart-btn">Restart</button>
+    </div> -->
+    <div class="footer">
+        Made by: <img src="./images/githublogo.png"><a href="https://github.com/sebastianCastro"> sebastianCastro</a>
+      </div>
     </div>
 </body>
 </html>

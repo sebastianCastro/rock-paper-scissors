@@ -55,6 +55,12 @@ function score() {
 function counter() {
     if (i > 5){
         restartBtn.style.visibility = "visible";
+        rockBtn.style.visibility = "hidden";
+        paperBtn.style.visibility = "hidden";
+        scissorsBtn.style.visibility = "hidden";
+        playerChoice[0].style.backgroundColor = "rgba(255, 255, 255, 0)";
+        playerChoice[1].style.backgroundColor = "rgba(255, 255, 255, 0)";
+        playerChoice[2].style.backgroundColor = "rgba(255, 255, 255, 0)";
     } else if (i == 5) {
         roundCounter.textContent = "Final Round";
     } else {
@@ -105,6 +111,9 @@ function restartGame() {
     computerChoice[0].style.backgroundColor = "rgba(255, 255, 255, 0)";
     computerChoice[1].style.backgroundColor = "rgba(255, 255, 255, 0)";
     computerChoice[2].style.backgroundColor = "rgba(255, 255, 255, 0)";
+    rockBtn.style.visibility = "visible";
+    paperBtn.style.visibility = "visible";
+    scissorsBtn.style.visibility = "visible";
     restartBtn.style.visibility = "hidden";
 }
 

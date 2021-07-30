@@ -23,7 +23,7 @@ body{
 
 .round-counter {
     position: fixed;
-    top: 60px;
+    /* top: 60px; */
     width: 100%;
     text-align: center;
     height: 60px;
@@ -217,7 +217,7 @@ body{
         background: #FFE901;
         align-items: center;
     }
-    
+
     .round-counter{
         top: 0px;
         margin-top: 50px;
@@ -409,5 +409,19 @@ body{
     .footer a {
         color: white;
         text-decoration: none;
+    }
+}
+
+@media (max-height: 650px) {
+    .round-counter{
+        display: flex;
+        top: unset;
+        margin-top: unset;
+    }
+
+    .round-counter #round-counter{
+        display: flex;
+        align-items: center;
+        transform: rotate(-90deg);
     }
 }

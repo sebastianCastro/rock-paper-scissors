@@ -74,10 +74,13 @@ function showPlayerHand(playerSelection) {
     playerChoice[2].style.backgroundColor = "rgba(255, 255, 255, 0)";
     if (playerSelection == "rock-btn") {
         playerChoice[0].style.backgroundColor = "#18C8F5";
+        sound();
     } else if (playerSelection == "paper-btn") {
         playerChoice[1].style.backgroundColor = "#18C8F5";
+        sound();
     } else {
         playerChoice[2].style.backgroundColor = "#18C8F5";
+        sound();
     }
 }
 
@@ -99,7 +102,18 @@ function showHands(playerSelection, computerSelection) {
     showComputerHand(computerSelection);
 }
 
+function sound() {
+    let clickSound = document.getElementById("click-sound");
+    clickSound.play();
+  }
+
+function restartSound() {
+    let rstSound = document.getElementById("click-sound-two");
+    rstSound.play();
+}
+
 function restartGame() {
+    restartSound();
     i = 1;
     playerCount = 0;
     computerCount = 0;

@@ -76,13 +76,11 @@ function showPlayerHand(playerSelection) {
     playerChoice[2].style.backgroundColor = "rgba(255, 255, 255, 0)";
     if (playerSelection == "rock-btn") {
         playerChoice[0].style.backgroundColor = "#18C8F5";
-        sound();
+        
     } else if (playerSelection == "paper-btn") {
         playerChoice[1].style.backgroundColor = "#18C8F5";
-        sound();
     } else {
         playerChoice[2].style.backgroundColor = "#18C8F5";
-        sound();
     }
 }
 
@@ -115,7 +113,7 @@ function restartSound() {
 }
 
 function restartGame() {
-    restartSound();
+    restartSound;
     i = 1;
     playerCount = 0;
     computerCount = 0;
@@ -136,6 +134,7 @@ function restartGame() {
 }
 
 function game(e, playerSelection, computerSelection) {
+    sound;
     let randomNumber = Math.floor(Math.random() * 3);
     playerSelection = e.target.id;
     computerSelection = computerHand[randomNumber];

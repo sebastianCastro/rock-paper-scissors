@@ -58,19 +58,11 @@ function counter() {
         rockBtn.removeEventListener("click", game);
         paperBtn.removeEventListener("click", game);
         scissorsBtn.removeEventListener("click", game);
-        playerButtons[0].style.backgroundColor = "#19D0FF";
-        computerButtons[0].style.backgroundColor = "#FF1969";
-        playerChoice[0].style.backgroundColor = "rgba(255, 255, 255, 0)";
-        playerChoice[1].style.backgroundColor = "rgba(255, 255, 255, 0)";
-        playerChoice[2].style.backgroundColor = "rgba(255, 255, 255, 0)";
     }else if (i > 5){
         restartBtn.style.visibility = "visible";
         rockBtn.removeEventListener("click", game);
         paperBtn.removeEventListener("click", game);
         scissorsBtn.removeEventListener("click", game);
-        playerChoice[0].style.backgroundColor = "rgba(255, 255, 255, 0)";
-        playerChoice[1].style.backgroundColor = "rgba(255, 255, 255, 0)";
-        playerChoice[2].style.backgroundColor = "rgba(255, 255, 255, 0)";
     } else if (i == 5) {
         roundCounter.textContent = "Final Round";
     } else {
@@ -144,8 +136,9 @@ function restartGame() {
 }
 
 function game(e, playerSelection, computerSelection) {
+    let randomNumber = Math.floor(Math.random() * 3);
     playerSelection = e.target.id;
-    computerSelection = computerHand[Math.floor(Math.random() * 3)];
+    computerSelection = computerHand[randomNumber];
     showHands(playerSelection, computerSelection);
     roundWinner(playerSelection, computerSelection);
     score(playerSelection, computerSelection);

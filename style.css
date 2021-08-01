@@ -21,12 +21,25 @@ body{
     align-items: center;
 }
 
+.round-counter::before{
+    content: "Best out of 5.";
+}
+
 .round-counter {
     position: fixed;
     top: 60px;
     width: 100%;
     text-align: center;
     /* height: 60px; */
+}
+
+.round-counter::after{
+    display: block;
+    content: "";
+    height: 5px;
+    background: #DBC900;
+    width: 50%;
+    margin-left: 25%;
 }
 
 .players {
@@ -221,6 +234,10 @@ body{
     .round-counter{
         top: 0px;
         margin-top: 50px;
+    }
+
+    .round-counter::after{
+        height: 3px;
     }
 
     .round-counter #round-counter{

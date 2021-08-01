@@ -53,11 +53,21 @@ function score() {
 }
 
 function counter() {
-    if (i > 5){
+    if (playerCount == 3 || computerCount == 3) {
         restartBtn.style.visibility = "visible";
-        rockBtn.style.visibility = "hidden";
-        paperBtn.style.visibility = "hidden";
-        scissorsBtn.style.visibility = "hidden";
+        rockBtn.removeEventListener("click", game);
+        paperBtn.removeEventListener("click", game);
+        scissorsBtn.removeEventListener("click", game);
+        playerButtons[0].style.backgroundColor = "#19D0FF";
+        computerButtons[0].style.backgroundColor = "#FF1969";
+        playerChoice[0].style.backgroundColor = "rgba(255, 255, 255, 0)";
+        playerChoice[1].style.backgroundColor = "rgba(255, 255, 255, 0)";
+        playerChoice[2].style.backgroundColor = "rgba(255, 255, 255, 0)";
+    }else if (i > 5){
+        restartBtn.style.visibility = "visible";
+        rockBtn.removeEventListener("click", game);
+        paperBtn.removeEventListener("click", game);
+        scissorsBtn.removeEventListener("click", game);
         playerChoice[0].style.backgroundColor = "rgba(255, 255, 255, 0)";
         playerChoice[1].style.backgroundColor = "rgba(255, 255, 255, 0)";
         playerChoice[2].style.backgroundColor = "rgba(255, 255, 255, 0)";
@@ -119,15 +129,17 @@ function restartGame() {
     computerCount = 0;
     roundCounter.textContent = "Round: 1";
     scoreStr.textContent = playerCount + " - " + computerCount;
+    playerButtons[0].style.backgroundColor = "rgba(255, 255, 255, 0)";
+    computerButtons[0].style.backgroundColor = "rgba(255, 255, 255, 0)";
     playerChoice[0].style.backgroundColor = "rgba(255, 255, 255, 0)";
     playerChoice[1].style.backgroundColor = "rgba(255, 255, 255, 0)";
     playerChoice[2].style.backgroundColor = "rgba(255, 255, 255, 0)";
     computerChoice[0].style.backgroundColor = "rgba(255, 255, 255, 0)";
     computerChoice[1].style.backgroundColor = "rgba(255, 255, 255, 0)";
     computerChoice[2].style.backgroundColor = "rgba(255, 255, 255, 0)";
-    rockBtn.style.visibility = "visible";
-    paperBtn.style.visibility = "visible";
-    scissorsBtn.style.visibility = "visible";
+    rockBtn.addEventListener("click", game);
+    paperBtn.addEventListener("click", game);
+    scissorsBtn.addEventListener("click", game);
     restartBtn.style.visibility = "hidden";
 }
 
@@ -160,3 +172,7 @@ let restartBtn = document.getElementById("restart-btn");
 restartBtn.style.visibility = "hidden";
 restartBtn.textContent = "Restart Game";
 restartBtn.addEventListener("click", restartGame);
+
+let playerButtons = document.getElementsByClassName("player-buttons");
+
+let computerButtons = document.getElementsByClassName("computer-buttons");
